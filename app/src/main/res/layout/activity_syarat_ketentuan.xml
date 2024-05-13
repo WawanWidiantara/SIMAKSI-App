@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".SyaratKetentuan">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/primary"
+        android:layout_height="55dp">
+        <ImageView
+            android:id="@+id/backActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_back_activity"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/lato_medium"
+            android:text="Pesan Jalur"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Syarat dan Ketentuan"
+                android:textColor="@color/black"
+                android:fontFamily="@font/lato_bold"
+                android:textSize="24sp"
+                android:layout_marginTop="24dp"/>
+            <TextView
+                android:layout_marginTop="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/large_text"
+                android:fontFamily="@font/lato_medium"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+
+            <Button
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="54dp"
+                android:id="@+id/btnSelanjutnya"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_btn"
+                android:text="Selanjutnya"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:fontFamily="@font/lato_bold"
+                android:textSize="14sp"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

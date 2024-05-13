@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">SIMAKSI Gunung</string>
+    <string name="large_text">
+        "1. Benar-benar sehat lahir batin dan tidak mempunyai riwayat penyakit apapun\n\n"
+        "2. Menggunakan peralatan standar pendakian atau yang memenuhi syarat untuk pendakian.\n\n"
+        "3. Menjaga kebersihan, kenyamanan dan keamanan Basecamp dan selama pendakian\n\n"
+        "4. Akan membawa turun kembali semua sampah atau bungkus makanan sekecil apapun yang dibawa tanpa kecuali\n\n"
+        "5. Dilarang membawa tisu basah, alat musik, spidol, music box, cat semprot/pilox, petasan, minuman keras dan senjata tajam\n\n"
+        "6. Dilarang masuk kawasan tanpa izin\n\n"
+        "7. Dilarang membuat jalur sendiri di luar jalur resmi\n\n"
+        "8. Dilarang Membawa senjata api dam membawa senjata tajam lebih dari 20cm.\n\n"
+        "9. Dilarang melakukan aktivitas vandalisme, menebang pohon, memetik edelweiss, dan merusak segala keanekaragaman hayati di dalam hutan\n\n""10. Dilarang menebang pohon, membuat api unggun, membawa kembang api dan petasan dikawasan Gunung Kembang.\n\n"11. Menjaga solidaritas dan kekompakan dalam rombongan selama pendakian.\n\n"12. Apabila terjadi hal-hal yang tidak diinginkan selama pendakian, akan melakukan pertolongan mandiri oleh rombongan sebelum melaporkan kepada pihak Basecamp.\n\n""13.  Apabila melanggar aturan yang telah ditetapkan oleh Forum Pengelola Gunung Kembang maka harus siap menerima sanksi berupa DENDA RP. 1.025.000, per Pelanggaran.\n"
+    </string>
+    <string name="detail_rute">
+        "\tGunung Sindoro merupakan salah satu gunung berapi aktif yang terletak di wilayah Kabupaten Wonosobo dan Temanggung, Jawa Tengah. Gunung Sindoro juga berhadapan langsung dengan Gunung Sumbing. Gunung Sindoro memiliki ketinggian 3.153 mdpl. Salah satu jalur pendakian Gunung Sindoro yang direkomendasikan untuk pemula yakni via Alang-Alang Sewu yang terletak di Dusun Anggungondok, Kecamatan Kertek, Kabupaten Wonosobo.
+\n\tTerdapat 4 pos pendakian dari basecamp sampai puncak Gunung Sindoro dengan estimasi waktu pendakian sekitar 6-7 jam. Di sepanjang jalur pendakian telah disediakan patok 1-20 yang berfungsi untuk menandai titik tertentu dan bisa dimanfaatkan untuk mengetahui posisi pendaki di jalur pendakian pendakian Gunung Sindoro via Alang-Alang Sewu."
+    </string>
+    <string name="sukses_pesan">
+        "Terima kasih atas pemesanan Anda.\nCek riwayat transaksi untuk melihat status pesanan dan detail pembayaran anda lebih lanjut.
+    </string>
+    <string-array name="jenis_kelamin">
+        <item>Pilih jenis kelamin</item>
+        <item>Laki-Laki</item>
+        <item>Perempuan</item>
+    </string-array>
+    <string-array name="metode_pembayaran">
+        <item>Pilih metode pembayaran</item>
+        <item>BCA</item>
+        <item>BRI</item>
+        <item>BNI</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

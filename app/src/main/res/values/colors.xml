@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="text_hint">#5E5E5E</color>
+    <color name="bg_edit_text">#E8E8E8</color>
+    <color name="primary">#F6D053</color>
+    <color name="stroke">#E2E2E2</color>
+    <color name="dibatalkan">#FFF0EE</color>
+    <color name="selesai">#EAF6ED</color>
+    <color name="menunggu">#FDF2DC</color>
+    <color name="diproses">#EFF4FE</color>
+    <color name="red_snackbar_error">#FFB7B8</color>
+    <color name="green_snackbar_success">#B5F8C3</color>
+    <color name="btn_unactive">#C0B1D3</color>
+    <color name="text_selesai">#5E5E5E</color>
+    <color name="bg_bottom_sheet">#F9F9F9</color>
+    <color name="time">#A4A4A4</color>
+    <color name="red">#FF1D1D</color>
+    <color name="subtilte_logout">#7E7E7E</color>
+    <color name="main_bg">#F9F9F9</color>
+</resources>

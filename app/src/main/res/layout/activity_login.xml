@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Login">
+    <LinearLayout
+        android:padding="15dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/backActivity"
+            android:layout_marginTop="32dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_back_activity"/>
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masuk"
+            android:fontFamily="@font/lato_bold"
+            android:textSize="24sp"
+            android:textColor="@color/black"/>
+        <ImageView
+            android:layout_width="255dp"
+            android:layout_height="255dp"
+            android:src="@drawable/image_login"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:fontFamily="@font/lato_medium"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
+        <EditText
+            android:id="@+id/edEmail"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_ed_unclick"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/lato_regular"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:hint="Masukkan email Anda"
+            android:textColorHint="@color/text_hint"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"/>
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kata sandi"
+            android:fontFamily="@font/lato_medium"
+            android:textSize="14sp"
+            android:textColor="@color/black"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_marginTop="10dp"
+            android:id="@+id/parentPassword"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            app:passwordToggleEnabled="true"
+            app:hintEnabled="false"
+            android:background="@drawable/bg_ed_unclick">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Kata sandi Anda"
+                android:singleLine="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:textColor="@color/text_hint"
+                android:background="@null"
+                android:drawablePadding="10dp"
+                android:textColorHint="@color/text_hint"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="14sp"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_btn">
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_centerInParent="true"
+                android:indeterminateTint="@color/white"/>
+            <Button
+                android:id="@+id/btnMasuk"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_btn_unactive"
+                android:text="Masuk"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:fontFamily="@font/lato_bold"
+                android:textSize="14sp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+</ScrollView>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#7C7C7C"
+    android:id="@+id/dim_background"
+    android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:id="@+id/scrollView">
+        <LinearLayout
+            android:id="@+id/llBottomSheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="20dp"
+            android:background="@drawable/bg_bottom_sheet"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tambah Anggota"
+                android:fontFamily="@font/lato_bold"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ID Anggota"
+                android:textSize="12sp"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="@color/black"/>
+            <EditText
+                android:id="@+id/edIdAnggota"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_ed_unclick"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:hint="Masukkan ID Anggota"
+                android:textColorHint="@color/text_hint"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"/>
+            <RelativeLayout
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="54dp"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_btn">
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="16dp"
+                    android:layout_height="16sp"
+                    android:layout_centerInParent="true"
+                    android:indeterminateTint="@color/white"/>
+                <Button
+                    android:id="@+id/btnAddMember"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_btn_unactive"
+                    android:text="Tambah Anggota"
+                    android:textColor="@color/black"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/lato_bold"
+                    android:textSize="14sp"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

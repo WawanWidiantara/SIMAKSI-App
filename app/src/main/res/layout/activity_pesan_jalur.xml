@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PesanJalur">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/primary"
+        android:layout_height="55dp">
+        <ImageView
+            android:id="@+id/backActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/ic_back_activity"/>
+
+        <TextView
+            android:id="@+id/titleActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/lato_medium"
+            android:text="Pesan Jalur"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detail booking"
+                android:textColor="@color/black"
+                android:fontFamily="@font/lato_bold"
+                android:textSize="24sp"
+                android:layout_marginTop="24dp"/>
+            <TextView
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Naik"
+                android:fontFamily="@font/lato_medium"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+            <EditText
+                android:id="@+id/edTanggalNaik"
+                android:enabled="true"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_ed_unclick"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:hint="DD/MM/YYYY"
+                android:drawableEnd="@drawable/ic_calendar"
+                android:textColorHint="@color/text_hint"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Turun"
+                android:fontFamily="@font/lato_medium"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+            <EditText
+                android:id="@+id/edTanggalTurun"
+                android:enabled="true"
+                android:focusable="false"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_ed_unclick"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/lato_regular"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:hint="DD/MM/YYYY"
+                android:drawableEnd="@drawable/ic_calendar"
+                android:textColorHint="@color/text_hint"
+                android:paddingStart="25dp"
+                android:paddingEnd="25dp"/>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Metode Pembayaran"
+                android:fontFamily="@font/lato_medium"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:id="@+id/spinnerMetodePembayaran"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_ed_unclick"
+                    android:fontFamily="@font/lato_regular"
+                    android:textSize="14sp"
+                    android:textColor="@color/red_snackbar_error"
+                    android:entries="@array/metode_pembayaran"
+                    android:hint="DD/MM/YYYY"
+                    android:drawableEnd="@drawable/ic_calendar"
+                    android:textColorHint="@color/text_hint"
+                    android:paddingStart="25dp"
+                    android:paddingEnd="25dp"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow_down"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="25dp"/>
+            </RelativeLayout>
+            <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anggota"
+                android:fontFamily="@font/lato_medium"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="8dp"
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                tools:listitem="@layout/fetch_add_personel"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnAddPersonel"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_button_add_personel"
+                android:text="Tambah Anggota"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:fontFamily="@font/lato_bold"
+                android:textSize="14sp"/>
+
+            <RelativeLayout
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="54dp"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_btn">
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="16dp"
+                    android:layout_height="16sp"
+                    android:layout_centerInParent="true"
+                    android:indeterminateTint="@color/white"/>
+                <Button
+                    android:id="@+id/btnPesan"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_btn"
+                    android:text="Pesan Sekarang"
+                    android:textColor="@color/black"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/lato_bold"
+                    android:textSize="14sp"/>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

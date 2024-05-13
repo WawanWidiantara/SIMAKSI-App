@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".History">
+    <RelativeLayout
+        android:id="@+id/parentTop"
+        android:layout_width="match_parent"
+        android:background="@color/primary"
+        android:layout_height="55dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/lato_medium"
+            android:text="Riwayat Transaksi"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/btnFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:paddingEnd="20dp"
+            android:src="@drawable/ic_filter"/>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@id/parentTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingStart="15dp"
+        android:paddingBottom="54dp"
+        android:paddingEnd="15dp"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            tools:listitem="@layout/fetch_history" />
+    </LinearLayout>
+
+<!--    <ScrollView-->
+<!--        android:layout_below="@id/parentTop"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:paddingTop="16dp"-->
+<!--            android:paddingStart="15dp"-->
+<!--            android:paddingBottom="54dp"-->
+<!--            android:paddingEnd="15dp"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/recyclerView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:visibility="visible"-->
+<!--                tools:listitem="@layout/fetch_history" />-->
+<!--        </LinearLayout>-->
+<!--    </ScrollView>-->
+<!--    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--        android:layout_below="@+id/parentTop"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:id="@+id/swipeRefreshLayout"-->
+<!--        android:layout_margin="15dp"-->
+<!--        android:layout_height="match_parent">-->
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:visibility="invisible"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/recyclerView"-->
+<!--            tools:listitem="@layout/fetch_history"/>-->
+<!--    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+<!--    <ProgressBar-->
+<!--        android:id="@+id/progressBar"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:indeterminateTint="@color/primary"-->
+<!--        android:layout_centerInParent="true"/>-->
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:visibility="visible"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/recyclerView"-->
+<!--        tools:listitem="@layout/fetch_history"/>-->
+<!--    <ImageView-->
+<!--        android:visibility="invisible"-->
+<!--        android:id="@+id/empty"-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:src="@drawable/empty"/>-->
+
+</RelativeLayout>
