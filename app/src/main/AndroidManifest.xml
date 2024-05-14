@@ -10,8 +10,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SIMAKSIGunung"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
         <activity
             android:name=".DetailPembayaran"
             android:exported="false" />
@@ -40,7 +43,7 @@
             android:name=".SyaratKetentuan"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -12,8 +12,10 @@
         "9. Dilarang melakukan aktivitas vandalisme, menebang pohon, memetik edelweiss, dan merusak segala keanekaragaman hayati di dalam hutan\n\n""10. Dilarang menebang pohon, membuat api unggun, membawa kembang api dan petasan dikawasan Gunung Kembang.\n\n"11. Menjaga solidaritas dan kekompakan dalam rombongan selama pendakian.\n\n"12. Apabila terjadi hal-hal yang tidak diinginkan selama pendakian, akan melakukan pertolongan mandiri oleh rombongan sebelum melaporkan kepada pihak Basecamp.\n\n""13.  Apabila melanggar aturan yang telah ditetapkan oleh Forum Pengelola Gunung Kembang maka harus siap menerima sanksi berupa DENDA RP. 1.025.000, per Pelanggaran.\n"
     </string>
     <string name="detail_rute">
-        "\tGunung Sindoro merupakan salah satu gunung berapi aktif yang terletak di wilayah Kabupaten Wonosobo dan Temanggung, Jawa Tengah. Gunung Sindoro juga berhadapan langsung dengan Gunung Sumbing. Gunung Sindoro memiliki ketinggian 3.153 mdpl. Salah satu jalur pendakian Gunung Sindoro yang direkomendasikan untuk pemula yakni via Alang-Alang Sewu yang terletak di Dusun Anggungondok, Kecamatan Kertek, Kabupaten Wonosobo.
-\n\tTerdapat 4 pos pendakian dari basecamp sampai puncak Gunung Sindoro dengan estimasi waktu pendakian sekitar 6-7 jam. Di sepanjang jalur pendakian telah disediakan patok 1-20 yang berfungsi untuk menandai titik tertentu dan bisa dimanfaatkan untuk mengetahui posisi pendaki di jalur pendakian pendakian Gunung Sindoro via Alang-Alang Sewu."
+        "\tTerdapat 4 pos pendakian dari basecamp sampai puncak Gunung Sindoro dengan estimasi waktu pendakian sekitar 6-7 jam. Di sepanjang jalur pendakian telah disediakan patok 1-20 yang berfungsi untuk menandai titik tertentu dan bisa dimanfaatkan untuk mengetahui posisi pendaki di jalur pendakian pendakian Gunung Sindoro via Alang-Alang Sewu."
+    </string>
+    <string name="detail_home">
+        "\tGunung Sindoro merupakan salah satu gunung berapi aktif yang terletak di wilayah Kabupaten Wonosobo dan Temanggung, Jawa Tengah. Gunung Sindoro juga berhadapan langsung dengan Gunung Sumbing. Gunung Sindoro memiliki ketinggian 3.153 mdpl. Salah satu jalur pendakian Gunung Sindoro yang direkomendasikan untuk pemula yakni via Alang-Alang Sewu yang terletak di Dusun Anggrungondok, Kecamatan Kertek, Kabupaten Wonosobo.
     </string>
     <string name="sukses_pesan">
         "Terima kasih atas pemesanan Anda.\nCek riwayat transaksi untuk melihat status pesanan dan detail pembayaran anda lebih lanjut.

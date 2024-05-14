@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".Home">
     <LinearLayout
         android:id="@+id/parentTop"
@@ -48,227 +49,241 @@
             </RelativeLayout>
         </RelativeLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_below="@id/parentTop"
+    <ScrollView
+        android:layout_marginTop="16dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="15dp"
-        android:orientation="vertical">
-        <ImageView
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_below="@id/parentTop"
             android:layout_width="match_parent"
-            android:src="@drawable/main_gunung"
-            android:layout_height="125dp"
-            android:background="@color/stroke"
-            />
-        <RelativeLayout
-            android:id="@+id/btnPesanRute"
-            android:layout_marginTop="16dp"
+            android:layout_height="wrap_content"
             android:padding="15dp"
-            android:background="@drawable/bg_content_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
+            android:orientation="vertical">
+            <ImageView
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:layout_width="match_parent"
+                android:src="@drawable/main_gunung"
+                android:layout_height="125dp"
+                android:background="@color/stroke"
+                />
+            <TextView
+                android:layout_marginTop="16dp"
+                android:justificationMode="inter_word"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Pesan Jalur"
-                    android:fontFamily="@font/lato_bold"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"/>
+                android:text="@string/detail_home"
+                android:fontFamily="@font/lato_medium"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+            <RelativeLayout
+                android:id="@+id/btnPesanRute"
+                android:layout_marginTop="16dp"
+                android:padding="15dp"
+                android:background="@drawable/bg_content_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
                 <LinearLayout
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="12sp"
-                        android:fontFamily="@font/lato_medium"
+                        android:text="Pesan Jalur"
+                        android:fontFamily="@font/lato_bold"
                         android:textColor="@color/black"
-                        android:text="Pesan"/>
-                    <ImageView
+                        android:textSize="14sp"/>
+                    <LinearLayout
+                        android:layout_marginTop="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_arrow_right"
-                        android:layout_marginStart="10dp"
-                        android:layout_gravity="center_vertical"/>
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/lato_medium"
+                            android:textColor="@color/black"
+                            android:text="Pesan"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_right"
+                            android:layout_marginStart="10dp"
+                            android:layout_gravity="center_vertical"/>
+                    </LinearLayout>
                 </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rute"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/detailRute"
+                        android:layout_alignParentEnd="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Detail"
+                        android:fontFamily="@font/lato_bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/primary"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:padding="15dp"
+                    android:background="@drawable/bg_content_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_marginRight="16dp"
+                            android:layout_width="45dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/pos1"
+                            android:scaleType="centerCrop"
+                            android:adjustViewBounds="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Basecamp - Pos 1 (Lembah Kesunyian)"
+                                android:fontFamily="@font/lato_bold"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"/>
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/lato_medium"
+                                    android:textColor="@color/black"
+                                    android:text="Estimasi waktu tempuh: 15 menit"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:padding="15dp"
+                    android:background="@drawable/bg_content_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_marginRight="16dp"
+                            android:layout_width="45dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/pos_1"
+                            android:scaleType="centerCrop"
+                            android:adjustViewBounds="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pos 1 (Lembah Kesunyian)"
+                                android:fontFamily="@font/lato_bold"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"/>
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/lato_medium"
+                                    android:textColor="@color/black"
+                                    android:text="Estimasi waktu tempuh: 1.5 - 2 jam"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:padding="15dp"
+                    android:background="@drawable/bg_content_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_marginRight="16dp"
+                            android:layout_width="45dp"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/pos_2"
+                            android:scaleType="centerCrop"
+                            android:adjustViewBounds="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pos 2 (Lembah Ketresnan)"
+                                android:fontFamily="@font/lato_bold"
+                                android:textColor="@color/black"
+                                android:textSize="14sp"/>
+                            <LinearLayout
+                                android:layout_marginTop="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:fontFamily="@font/lato_medium"
+                                    android:textColor="@color/black"
+                                    android:text="Estimasi waktu tempuh: 1.5 jam"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
             </LinearLayout>
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rute"
-                    android:fontFamily="@font/lato_bold"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"/>
-                <TextView
-                    android:id="@+id/detailRute"
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Detail"
-                    android:fontFamily="@font/lato_bold"
-                    android:textSize="14sp"
-                    android:textColor="@color/primary"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:padding="15dp"
-                android:background="@drawable/bg_content_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_marginRight="16dp"
-                        android:layout_width="45dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/pos1"
-                        android:scaleType="centerCrop"
-                        android:adjustViewBounds="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Basecamp - Pos 1 (Lembah Kesunyian)"
-                            android:fontFamily="@font/lato_bold"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"/>
-                        <LinearLayout
-                            android:layout_marginTop="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="12sp"
-                                android:fontFamily="@font/lato_medium"
-                                android:textColor="@color/black"
-                                android:text="Estimasi waktu tempuh: 15 menit"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:padding="15dp"
-                android:background="@drawable/bg_content_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_marginRight="16dp"
-                        android:layout_width="45dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/pos1"
-                        android:scaleType="centerCrop"
-                        android:adjustViewBounds="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pos 1 (Lembah Kesunyian)"
-                            android:fontFamily="@font/lato_bold"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"/>
-                        <LinearLayout
-                            android:layout_marginTop="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="12sp"
-                                android:fontFamily="@font/lato_medium"
-                                android:textColor="@color/black"
-                                android:text="Estimasi waktu tempuh: 1.5 - 2 jam"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
-            <RelativeLayout
-                android:layout_marginTop="10dp"
-                android:padding="15dp"
-                android:background="@drawable/bg_content_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_marginRight="16dp"
-                        android:layout_width="45dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/pos1"
-                        android:scaleType="centerCrop"
-                        android:adjustViewBounds="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"/>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Pos 2 (Lembah Ketresnan)"
-                            android:fontFamily="@font/lato_bold"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"/>
-                        <LinearLayout
-                            android:layout_marginTop="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="12sp"
-                                android:fontFamily="@font/lato_medium"
-                                android:textColor="@color/black"
-                                android:text="Estimasi waktu tempuh: 1.5 jam"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
-            </RelativeLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
 
 
 
-</RelativeLayout>
+</LinearLayout>
