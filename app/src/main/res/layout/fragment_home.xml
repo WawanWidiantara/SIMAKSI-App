@@ -57,6 +57,7 @@
             android:layout_below="@id/parentTop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="54dp"
             android:padding="15dp"
             android:orientation="vertical">
             <ImageView
@@ -118,6 +119,7 @@
 
             <LinearLayout
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="54dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
