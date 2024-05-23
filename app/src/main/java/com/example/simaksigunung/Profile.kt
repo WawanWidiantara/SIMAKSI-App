@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.simaksigunung.databinding.FragmentHomeBinding
 import com.example.simaksigunung.databinding.FragmentProfileBinding
+import com.example.simaksigunung.register.Register
 
 
 class Profile : Fragment() {

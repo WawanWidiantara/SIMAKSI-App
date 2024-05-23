@@ -6,9 +6,10 @@
     android:fitsSystemWindows="true"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Register">
+    tools:context=".register.Register">
 
     <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -28,12 +29,14 @@
             android:fontFamily="@font/lato_bold"
             android:textSize="24sp"
             android:textColor="@color/black"/>
+
         <ImageView
             android:layout_width="255dp"
             android:layout_height="255dp"
-            android:src="@drawable/image_register"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:src="@drawable/image_register" />
+
         <TextView
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
@@ -127,20 +130,22 @@
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="16dp"
-                android:layout_height="16sp"
+                android:layout_height="16dp"
                 android:layout_centerInParent="true"
-                android:indeterminateTint="@color/white"/>
+                android:indeterminateTint="@color/black"/>
             <Button
                 android:id="@+id/btnDaftar"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
-                android:background="@drawable/bg_btn"
+                android:background="@drawable/bg_btn_unactive"
                 android:text="Selanjutnya"
                 android:textColor="@color/black"
                 android:textAllCaps="false"
                 android:fontFamily="@font/lato_bold"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:enabled="false"/>
         </RelativeLayout>
+
     </LinearLayout>
 
 
