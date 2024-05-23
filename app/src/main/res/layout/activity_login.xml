@@ -97,16 +97,17 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_centerInParent="true"
-                android:indeterminateTint="@color/white"/>
+                android:indeterminateTint="@color/black"/>
             <Button
                 android:id="@+id/btnMasuk"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
                 android:background="@drawable/bg_btn_unactive"
                 android:text="Masuk"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textAllCaps="false"
                 android:fontFamily="@font/lato_bold"
+                android:enabled="false"
                 android:textSize="14sp"/>
         </RelativeLayout>
 
