@@ -39,6 +39,7 @@
             <EditText
                 android:id="@+id/edIdAnggota"
                 android:layout_width="match_parent"
+                android:inputType="number"
                 android:layout_height="36dp"
                 android:background="@drawable/bg_ed_unclick"
                 android:layout_marginTop="10dp"
@@ -74,7 +75,4 @@
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
-
-
-
 </LinearLayout>

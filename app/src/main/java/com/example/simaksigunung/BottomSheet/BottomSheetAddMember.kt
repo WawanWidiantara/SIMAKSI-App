@@ -3,60 +3,69 @@ package com.example.simaksigunung.BottomSheet
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.simaksigunung.BottomSheet.BottomSheetListener.BottomSheetListener
 import com.example.simaksigunung.R
+import com.example.simaksigunung.databinding.BottomSheetAddPersonelBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomSheetAddMember : BottomSheetDialogFragment(){
-    private var listener : BottomSheetListener? = null
-    private var initialScrollViewPaddingBottom = 0
+class BottomSheetAddMember : BottomSheetDialogFragment() {
+    private var _binding: BottomSheetAddPersonelBinding? = null
+    private val binding get() = _binding!!
+    private var listener: BottomSheetListener? = null
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.bottom_sheet_add_personel, container, false)
-        var scrollView = view.findViewById<View>(R.id.scrollView)
-        initialScrollViewPaddingBottom = view.findViewById<View>(R.id.scrollView).paddingBottom
-        val onFocusChangeListener = View.OnFocusChangeListener { view, hasFocus ->
-            if (hasFocus) {
-                scrollView.viewTreeObserver.addOnGlobalLayoutListener {
-                    val rect = android.graphics.Rect()
-                    scrollView.getWindowVisibleDisplayFrame(rect)
-                    val screenHeight = scrollView.rootView.height
-                    val keypadHeight = screenHeight - rect.bottom
+        _binding = BottomSheetAddPersonelBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-                    if (keypadHeight == keypadHeight) { // Keyboard muncul
-                        val paddingBottom = screenHeight - initialScrollViewPaddingBottom
-                        if (paddingBottom > 0) {
-                            scrollView.setPadding(
-                                scrollView.paddingLeft,
-                                scrollView.paddingTop,
-                                scrollView.paddingRight,
-                                paddingBottom
-                            )
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-                        }
-                    } else { // Keyboard tertutup
-                        scrollView.setPadding(
-                            scrollView.paddingLeft,
-                            scrollView.paddingTop,
-                            scrollView.paddingRight,
-                            initialScrollViewPaddingBottom
-                        )
-                    }
+        binding.edIdAnggota.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val input = s.toString().trim()
+                if (input.isNotEmpty()) {
+                    binding.btnAddMember.isEnabled = true
+                    binding.btnAddMember.setBackgroundResource(R.drawable.bg_btn)
+                } else {
+                    binding.btnAddMember.isEnabled = false
+                    binding.btnAddMember.setBackgroundResource(R.drawable.bg_btn_unactive)
                 }
             }
+        })
+
+        binding.btnAddMember.setOnClickListener {
+            val memberId = binding.edIdAnggota.text.toString().toIntOrNull()
+            if (memberId != null) {
+                binding.progressBar.visibility = View.VISIBLE
+                binding.btnAddMember.visibility = View.GONE
+                listener?.onMemberAdded(memberId)
+            } else {
+                Toast.makeText(context, "Please enter a valid member ID", Toast.LENGTH_SHORT).show()
+            }
         }
-        return view
+    }
+
+    fun setBottomSheetListener(listener: BottomSheetListener) {
+        this.listener = listener
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        // Pastikan activity mengimplementasikan interface
+        // Ensure the parent activity implements the listener
         if (context is BottomSheetListener) {
             listener = context
         } else {
@@ -69,13 +78,15 @@ class BottomSheetAddMember : BottomSheetDialogFragment(){
         dialog.window?.setWindowAnimations(R.style.BottomSheetAnimationExit)
         return dialog
     }
+
     override fun onStart() {
         super.onStart()
         dialog?.window?.setWindowAnimations(R.style.BottomSheetAnimationEnter)
-        dialog?.window?.setDimAmount(0.5f) // Set transparansi latar belakang
+        dialog?.window?.setDimAmount(0.5f) // Set transparency for the background
     }
-    override fun onStop() {
-        super.onStop()
-        dismiss()
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

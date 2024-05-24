@@ -7,9 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
-import com.androidnetworking.interfaces.StringRequestListener
+import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.example.simaksigunung.api.urlAPI
 import com.example.simaksigunung.databinding.ActivitySyaratKetentuanBinding
+import org.json.JSONObject
 
 class SyaratKetentuan : AppCompatActivity() {
     private lateinit var binding: ActivitySyaratKetentuanBinding
@@ -44,11 +45,18 @@ class SyaratKetentuan : AppCompatActivity() {
             .addHeaders("Authorization", userId)
             .setContentType("application/json")
             .build()
-            .getAsString(object : StringRequestListener {
-                override fun onResponse(response: String?) {
+            .getAsJSONObject(object : JSONObjectRequestListener {
+                override fun onResponse(response: JSONObject) {
+                    // Extract the "id" from the response
+                    val tripId = response.getJSONObject("data").getInt("id")
+
                     // Handle the response
                     Toast.makeText(this@SyaratKetentuan, "Trip created successfully!", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this@SyaratKetentuan, PesanJalur::class.java))
+
+                    // Pass the "id" to PesanJalur activity
+                    val intent = Intent(this@SyaratKetentuan, PesanJalur::class.java)
+                    intent.putExtra("tripId", tripId)
+                    startActivity(intent)
                 }
 
                 override fun onError(anError: ANError?) {
