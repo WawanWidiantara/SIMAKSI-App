@@ -81,7 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
                     android:background="@drawable/bg_btn"
-                    android:enabled="false"
+                    android:enabled="true"
                     android:fontFamily="@font/lato_bold"
                     android:text="Selanjutnya"
                     android:textAllCaps="false"
