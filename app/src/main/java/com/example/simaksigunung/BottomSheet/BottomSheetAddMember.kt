@@ -53,6 +53,8 @@ class BottomSheetAddMember : BottomSheetDialogFragment() {
                 binding.progressBar.visibility = View.VISIBLE
                 binding.btnAddMember.visibility = View.GONE
                 listener?.onMemberAdded(memberId)
+                binding.progressBar.visibility = View.GONE
+                binding.btnAddMember.visibility = View.VISIBLE
             } else {
                 Toast.makeText(context, "Please enter a valid member ID", Toast.LENGTH_SHORT).show()
             }

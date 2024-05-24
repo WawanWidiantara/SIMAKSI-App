@@ -166,14 +166,15 @@
                     android:layout_width="16dp"
                     android:layout_height="16sp"
                     android:layout_centerInParent="true"
-                    android:indeterminateTint="@color/white"/>
+                    android:indeterminateTint="@color/black"/>
                 <Button
                     android:id="@+id/btnPesan"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
-                    android:background="@drawable/bg_btn"
+                    android:background="@drawable/bg_btn_unactive"
                     android:text="Pesan Sekarang"
                     android:textColor="@color/black"
+                    android:enabled="false"
                     android:textAllCaps="false"
                     android:fontFamily="@font/lato_bold"
                     android:textSize="14sp"/>
