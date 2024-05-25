@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="40dp"
-    tools:context=".PesanJalurSukses">
+    tools:context=".booking.PesanJalurSukses">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         app:cardBackgroundColor="@color/white"

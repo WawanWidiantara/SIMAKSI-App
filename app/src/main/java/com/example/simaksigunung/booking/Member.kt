@@ -1,4 +1,4 @@
-package com.example.simaksigunung
+package com.example.simaksigunung.booking
 
 data class Member(
     val id: Int,

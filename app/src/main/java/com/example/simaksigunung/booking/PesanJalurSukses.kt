@@ -1,12 +1,9 @@
-package com.example.simaksigunung
+package com.example.simaksigunung.booking
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.simaksigunung.databinding.ActivityLoginBinding
+import com.example.simaksigunung.MainActivity
 import com.example.simaksigunung.databinding.ActivityPesanJalurSuksesBinding
 
 class PesanJalurSukses : AppCompatActivity() {

@@ -35,13 +35,13 @@
             android:name=".DetailRute"
             android:exported="false" />
         <activity
-            android:name=".PesanJalurSukses"
+            android:name=".booking.PesanJalurSukses"
             android:exported="false" />
         <activity
-            android:name=".PesanJalur"
+            android:name=".booking.PesanJalur"
             android:exported="false" />
         <activity
-            android:name=".SyaratKetentuan"
+            android:name=".booking.SyaratKetentuan"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"

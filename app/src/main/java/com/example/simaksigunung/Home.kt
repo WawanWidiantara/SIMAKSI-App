@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.simaksigunung.booking.SyaratKetentuan
 import com.example.simaksigunung.databinding.FragmentHomeBinding
 import java.text.SimpleDateFormat
 import java.util.Date

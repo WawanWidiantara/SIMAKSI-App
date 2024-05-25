@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context=".SyaratKetentuan">
+    tools:context=".booking.SyaratKetentuan">
 
     <RelativeLayout
         android:layout_width="match_parent"

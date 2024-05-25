@@ -1,10 +1,11 @@
-package com.example.simaksigunung
+package com.example.simaksigunung.booking
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.simaksigunung.R
 
 class MembersAdapter(private val members: MutableList<Member>, private val onDelete: (Int) -> Unit) :
     RecyclerView.Adapter<MembersAdapter.MemberViewHolder>() {
