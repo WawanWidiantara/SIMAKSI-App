@@ -19,6 +19,8 @@ import com.example.simaksigunung.api.urlAPI
 import com.example.simaksigunung.databinding.FragmentHistoryBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class History : Fragment(), BottomSheetListenerFilter {
     private lateinit var binding: FragmentHistoryBinding
@@ -94,7 +96,7 @@ class History : Fragment(), BottomSheetListenerFilter {
 
         val url = urlAPI.endPoint.url
 
-        AndroidNetworking.get("$url/api/trips?status=&order=terbaru")
+        AndroidNetworking.get("$url/api/trips?status=&order=terlama")
             .addHeaders("Authorization", userId)
             .build()
             .getAsJSONObject(object : JSONObjectRequestListener {

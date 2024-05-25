@@ -4,20 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".DetailTransaksi">
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/primary"
-        android:layout_height="55dp">
+        android:layout_height="55dp"
+        android:background="@color/primary">
+
         <ImageView
             android:id="@+id/backActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="20dp"
-            android:src="@drawable/ic_back_activity"/>
+            android:src="@drawable/ic_back_activity" />
 
         <TextView
             android:id="@+id/titleActivity"
@@ -29,240 +31,264 @@
             android:textColor="@color/black"
             android:textSize="18sp" />
     </RelativeLayout>
+
     <ScrollView
-        android:visibility="visible"
         android:id="@+id/parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="15dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="15dp">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
-                    android:layout_centerHorizontal="true"
                     android:id="@+id/statusTransaksi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Pesanan Menunggu"
+                    android:layout_centerHorizontal="true"
                     android:fontFamily="@font/lato_bold"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"/>
+                    android:text="Pesanan Menunggu"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </RelativeLayout>
+
             <LinearLayout
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="32dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="32dp"
                 android:background="@drawable/bg_content_home"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ID Pesanan"
-                    android:fontFamily="@font/lato_bold"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
+                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="15dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:fontFamily="@font/lato_bold"
+                    android:text="ID Pesanan"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
                 <TextView
                     android:id="@+id/idPesanan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
                     android:fontFamily="@font/lato_bold"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center_horizontal"/>
+                    android:textSize="14sp" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/stroke"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="15dp"
+                    android:background="@color/stroke" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:text="Tanggal pesanan"
                     android:layout_marginStart="20dp"
-                    android:fontFamily="@font/lato_bold"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Tanggal pesanan"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
                 <TextView
                     android:id="@+id/tanggalPesanan"
-                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
                     android:layout_marginStart="20dp"
-                    android:fontFamily="@font/lato_regular"/>
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/stroke"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="15dp"
+                    android:background="@color/stroke" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:text="Pemesan"
                     android:layout_marginStart="20dp"
-                    android:fontFamily="@font/lato_bold"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Pemesan"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
                 <TextView
                     android:id="@+id/namaPemesan"
-                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
                     android:layout_marginStart="20dp"
-                    android:fontFamily="@font/lato_regular"/>
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/stroke"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="15dp"
+                    android:background="@color/stroke" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:text="Pembayaran"
                     android:layout_marginStart="20dp"
-                    android:fontFamily="@font/lato_bold"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Pembayaran"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
                 <TextView
                     android:id="@+id/metodePembayaran"
-                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:text="-"
                     android:layout_marginStart="20dp"
-                    android:fontFamily="@font/lato_regular"/>
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="-"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/stroke"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="15dp"
+                    android:background="@color/stroke" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:text="Check in"
                     android:layout_marginStart="20dp"
-                    android:fontFamily="@font/lato_bold"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Check in"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
                 <TextView
                     android:id="@+id/checkIn"
-                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:text="-"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
-                    android:fontFamily="@font/lato_regular"/>
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:text="-"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/stroke"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="15dp"
+                    android:background="@color/stroke" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:text="Check out"
                     android:layout_marginStart="20dp"
-                    android:fontFamily="@font/lato_bold"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Check out"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
                 <TextView
                     android:id="@+id/checkOut"
-                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
-                    android:fontFamily="@font/lato_regular"/>
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/stroke"
-                    android:layout_marginTop="15dp"/>
+                    android:layout_marginTop="15dp"
+                    android:background="@color/stroke" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:text="Anggota"
                     android:layout_marginStart="20dp"
-                    android:fontFamily="@font/lato_bold"/>
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/lato_bold"
+                    android:text="Anggota"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
                 <TextView
                     android:id="@+id/anggota"
-                    android:layout_marginTop="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="25dp"
-                    android:fontFamily="@font/lato_regular"/>
+                    android:fontFamily="@font/lato_regular"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
             </LinearLayout>
+
             <Button
-                android:visibility="visible"
                 android:id="@+id/btnPembayaran"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/bg_btn"
                 android:fontFamily="@font/lato_bold"
-                android:textSize="14sp"
                 android:text="Lanjutkan Pembayaran"
-                android:textColor="@color/black"
                 android:textAllCaps="false"
-                android:layout_marginTop="10dp"/>
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:visibility="visible" />
+
             <Button
-                android:visibility="gone"
                 android:id="@+id/btnCetak"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/bg_btn"
                 android:fontFamily="@font/lato_bold"
-                android:textSize="14sp"
-                android:text="Lanjutkan Pembayaran"
-                android:textColor="@color/black"
+                android:text="Cetak Surat"
                 android:textAllCaps="false"
-                android:layout_marginTop="10dp"/>
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
             <Button
-                android:visibility="visible"
                 android:id="@+id/btnBatalkan"
                 android:layout_width="match_parent"
                 android:layout_height="36dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/bg_btn"
                 android:backgroundTint="@color/red"
                 android:fontFamily="@font/lato_bold"
-                android:textSize="14sp"
                 android:text="Batalkan Pesanan"
-                android:textColor="@color/white"
                 android:textAllCaps="false"
-                android:layout_marginTop="10dp"/>
-
-
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:visibility="visible" />
         </LinearLayout>
     </ScrollView>
-
-
 </LinearLayout>
