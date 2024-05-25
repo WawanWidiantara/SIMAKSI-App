@@ -4,14 +4,17 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.example.simaksigunung.api.urlAPI
 import com.example.simaksigunung.databinding.ActivityDetailTransaksiBinding
+import com.example.simaksigunung.databinding.DialogDibatalkanBinding
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Locale
@@ -47,6 +50,10 @@ class DetailTransaksi : AppCompatActivity() {
                 putExtra("payment_details", paymentDetails)
             }
             startActivity(intent)
+        }
+
+        binding.btnBatalkan.setOnClickListener {
+            showCancelDialog()
         }
 
         binding.backActivity.setOnClickListener {
@@ -159,5 +166,61 @@ class DetailTransaksi : AppCompatActivity() {
         return text.split(" ").joinToString(" ") { word ->
             word.replaceFirstChar { it.uppercase() }
         }
+    }
+
+    private fun showCancelDialog() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_dibatalkan, null)
+        val dialogBinding = DialogDibatalkanBinding.bind(dialogView)
+        val alertDialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setCancelable(false)
+            .create()
+
+        dialogBinding.btnYa.setOnClickListener {
+            dialogBinding.progressBar.visibility = View.VISIBLE
+            dialogBinding.btnYa.visibility = View.GONE
+            cancelOrder(alertDialog, dialogBinding.progressBar)
+        }
+
+        dialogBinding.btnTidak.setOnClickListener {
+            alertDialog.dismiss()
+        }
+
+        alertDialog.show()
+    }
+
+    private fun cancelOrder(alertDialog: AlertDialog, progressBar: View) {
+        val tripId = intent.getStringExtra("id_order")?.replace("ID: ", "")?.toIntOrNull() ?: return
+        val sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
+        val userId = sharedPreferences?.getInt("user_id", -1)?.toString() ?: ""
+
+        if (userId == "-1") {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            progressBar.visibility = View.GONE
+            return
+        }
+
+        val url = urlAPI.endPoint.url
+        AndroidNetworking.post("$url/api/trips/$tripId/cancel")
+            .addHeaders("Authorization", userId)
+            .build()
+            .getAsJSONObject(object : JSONObjectRequestListener {
+                override fun onResponse(response: JSONObject?) {
+                    Toast.makeText(this@DetailTransaksi, "Order cancelled successfully", Toast.LENGTH_SHORT).show()
+                    alertDialog.dismiss()
+
+                    // Navigate to History fragment
+                    val intent = Intent(this@DetailTransaksi, MainActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    intent.putExtra("fragment", "history")
+                    startActivity(intent)
+                }
+
+                override fun onError(anError: ANError) {
+                    Log.e("DetailTransaksi", "Error cancelling order: ${anError.errorDetail}")
+                    Toast.makeText(this@DetailTransaksi, "Failed to cancel order: ${anError.message}", Toast.LENGTH_SHORT).show()
+                    progressBar.visibility = View.GONE
+                }
+            })
     }
 }

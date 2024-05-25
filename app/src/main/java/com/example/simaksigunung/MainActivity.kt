@@ -19,11 +19,15 @@ class MainActivity : AppCompatActivity() {
 
         // Check if there's an extra to open a specific fragment
         val fragmentName = intent.getStringExtra("fragment")
-        if (fragmentName == "profile") {
+        if (fragmentName == "history") {
+            replaceFragment(History())
+            binding.bottomNavigationView.selectedItemId = R.id.historyFragment
+        } else if (fragmentName == "profile") {
             replaceFragment(Profile())
             binding.bottomNavigationView.selectedItemId = R.id.profileFragment
         } else {
             replaceFragment(Home())
+            binding.bottomNavigationView.selectedItemId = R.id.homeFragment
         }
 
         binding.bottomNavigationView.setOnItemSelectedListener {
