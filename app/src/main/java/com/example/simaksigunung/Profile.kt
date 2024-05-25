@@ -10,15 +10,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.StringRequestListener
 import com.example.simaksigunung.api.urlAPI
 import com.example.simaksigunung.databinding.FragmentProfileBinding
 import com.example.simaksigunung.register.Register
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class Profile : Fragment() {
     private lateinit var binding: FragmentProfileBinding
+    private val dateFormatDisplay = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+    private val dateFormatServer = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +68,7 @@ class Profile : Fragment() {
 
             val email = sharedPreferences.getString("email", "")
             val name = sharedPreferences.getString("name", "")
-            val dateOfBirth = sharedPreferences.getString("date_of_birth", "")
+            val dateOfBirth = formatDate(sharedPreferences.getString("date_of_birth", ""))
             val gender = sharedPreferences.getString("gender", "")
             val phone = sharedPreferences.getString("phone", "")
 
@@ -134,5 +140,20 @@ class Profile : Fragment() {
 
         // Refresh the fragment to update the UI
         checkUserData()
+    }
+    private fun formatDate(dateString: String?): String {
+        return try {
+            val date = dateFormatServer.parse(dateString ?: return "-")
+            dateFormatDisplay.format(date!!)
+        } catch (e: Exception) {
+            "-"
+        }
+    }
+    private fun formatNullableDate(dateString: String?): String {
+        return if (dateString == null || dateString == "null") {
+            "-"
+        } else {
+            formatDate(dateString)
+        }
     }
 }
