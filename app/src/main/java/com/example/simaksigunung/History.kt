@@ -1,72 +1,39 @@
 package com.example.simaksigunung
 
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.view.FrameStats
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.androidnetworking.AndroidNetworking
+import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.example.simaksigunung.BottomSheet.BottomSheetFilter
 import com.example.simaksigunung.BottomSheet.BottomSheetListener.BottomSheetListenerFilter
+import com.example.simaksigunung.api.urlAPI
 import com.example.simaksigunung.databinding.FragmentHistoryBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
-
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
+import org.json.JSONObject
 
 class History : Fragment(), BottomSheetListenerFilter {
     private lateinit var binding: FragmentHistoryBinding
     private lateinit var adapter: AdapterHistory
-    private var dataList: List<DataHistory> = emptyList()
-    private  var bottomSheetDialog : BottomSheetFilter? = null
-
-    var idData = listOf(
-        "ID: 321-ini-random",
-        "ID: 321-ini-random",
-        "ID: 321-ini-random",
-        "ID: 321-ini-random",
-        "ID: 321-ini-random"
-    )
-    var tanggalData = listOf(
-        "2021-08-01",
-        "2021-08-02",
-        "2021-08-03",
-        "2021-08-04",
-        "2021-08-05"
-    )
-    var statusData = listOf(
-        "menunggu",
-        "lunas",
-        "aktif",
-        "selesai",
-        "dibatalkan"
-    )
-
-//    var dataList = listOf(
-//        DataHistory(idData[0], tanggalData[0], statusData[0]),
-//        DataHistory(idData[1], tanggalData[1], statusData[1]),
-//        DataHistory(idData[2], tanggalData[2], statusData[2]),
-//        DataHistory(idData[3], tanggalData[3], statusData[3]),
-//        DataHistory(idData[4], tanggalData[4], statusData[4]),
-//
-//    )
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private var dataList: MutableList<DataHistory> = mutableListOf()
+    private var bottomSheetDialog: BottomSheetFilter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentHistoryBinding.inflate(inflater, container, false)
-        inisiliasiRecyclerView()
+        initializeRecyclerView()
+        fetchHistoryData()
+        setupSwipeToRefresh()
         return binding.root
     }
 
@@ -78,23 +45,7 @@ class History : Fragment(), BottomSheetListenerFilter {
     }
 
 
-
-    companion object {
-
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            History().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-
-    fun inisiliasiRecyclerView() {
-        for (i in idData.indices) {
-            dataList += DataHistory(idData[i], tanggalData[i], statusData[i])
-        }
+    private fun initializeRecyclerView() {
         binding.recyclerView.setHasFixedSize(true)
         val layoutManager = LinearLayoutManager(activity)
         layoutManager.reverseLayout = true
@@ -108,18 +59,71 @@ class History : Fragment(), BottomSheetListenerFilter {
         bottomSheetDialog = BottomSheetFilter(this)
         val bundle = Bundle()
         bottomSheetDialog!!.arguments = bundle
-        activity?.supportFragmentManager?.let { bottomSheetDialog!!.show(it, bottomSheetDialog!!.tag) }
-
+        activity?.supportFragmentManager?.let {
+            bottomSheetDialog!!.show(
+                it,
+                bottomSheetDialog!!.tag
+            )
+        }
 
         bottomSheetDialog!!.dialog?.setOnShowListener {
             val dialog = bottomSheetDialog!!.dialog as BottomSheetDialog
 
-            // Set transparansi pada latar belakang di luar bottom sheet
-            val container = dialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)?.parent as View
-            container.setBackgroundColor(Color.parseColor("#80000000")) // Warna hitam transparan dengan alpha 128
+            // Set transparency for the background outside the bottom sheet
+            val container =
+                dialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)?.parent as View
+            container.setBackgroundColor(Color.parseColor("#80000000")) // Semi-transparent black color with alpha 128
         }
-
     }
 
+    private fun setupSwipeToRefresh() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            fetchHistoryData()
+        }
+    }
 
+    private fun fetchHistoryData() {
+        val sharedPreferences = requireContext().getSharedPreferences("user", Context.MODE_PRIVATE)
+        val userId = sharedPreferences.getInt("user_id", -1).toString()
+
+        if (userId == "-1") {
+            Toast.makeText(requireContext(), "User not logged in", Toast.LENGTH_SHORT).show()
+            binding.swipeRefreshLayout.isRefreshing = false
+            return
+        }
+
+        val url = urlAPI.endPoint.url
+
+        AndroidNetworking.get("$url/api/trips?status=&order=terbaru")
+            .addHeaders("Authorization", userId)
+            .build()
+            .getAsJSONObject(object : JSONObjectRequestListener {
+                override fun onResponse(response: JSONObject?) {
+                    response?.let {
+                        val dataArray = it.getJSONArray("data")
+                        dataList.clear()  // Clear the existing list
+                        for (i in 0 until dataArray.length()) {
+                            val tripObject = dataArray.getJSONObject(i)
+                            val dataHistory = DataHistory(
+                                id_order = "ID: ${tripObject.getInt("id")}",
+                                tanggal_order = tripObject.getString("updated_at"),
+                                status_order = tripObject.getString("status")
+                            )
+                            dataList.add(dataHistory)
+                        }
+                        adapter.notifyDataSetChanged()
+                    }
+                    binding.swipeRefreshLayout.isRefreshing = false
+                }
+
+                override fun onError(anError: ANError) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Failed to fetch history: ${anError.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    binding.swipeRefreshLayout.isRefreshing = false
+                }
+            })
+    }
 }
