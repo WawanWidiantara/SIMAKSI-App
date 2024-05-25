@@ -1,21 +1,30 @@
 package com.example.simaksigunung
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.DownloadListener
 import com.androidnetworking.interfaces.JSONObjectRequestListener
 import com.example.simaksigunung.api.urlAPI
 import com.example.simaksigunung.databinding.ActivityDetailTransaksiBinding
 import com.example.simaksigunung.databinding.DialogDibatalkanBinding
 import org.json.JSONObject
+import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -23,6 +32,14 @@ class DetailTransaksi : AppCompatActivity() {
     private lateinit var binding: ActivityDetailTransaksiBinding
     private val dateFormatDisplay = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     private val dateFormatServer = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+
+    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
+        if (isGranted) {
+            generatePDF()
+        } else {
+            Toast.makeText(this, "Permission denied. Cannot download PDF.", Toast.LENGTH_SHORT).show()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,6 +71,10 @@ class DetailTransaksi : AppCompatActivity() {
 
         binding.btnBatalkan.setOnClickListener {
             showCancelDialog()
+        }
+
+        binding.btnCetak.setOnClickListener {
+            checkPermissionsAndDownloadPDF()
         }
 
         binding.backActivity.setOnClickListener {
@@ -222,5 +243,63 @@ class DetailTransaksi : AppCompatActivity() {
                     progressBar.visibility = View.GONE
                 }
             })
+    }
+
+    private fun checkPermissionsAndDownloadPDF() {
+        when {
+            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED -> {
+                generatePDF()
+            }
+            shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE) -> {
+                // Show an explanation to the user
+                Toast.makeText(this, "Storage permission is required to download PDF", Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                // Request permission
+                requestPermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+        }
+    }
+
+    private fun generatePDF() {
+        val tripId = intent.getStringExtra("id_order")?.replace("ID: ", "")?.toIntOrNull() ?: return
+        val sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
+        val userId = sharedPreferences?.getInt("user_id", -1)?.toString() ?: ""
+
+        if (userId == "-1") {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val url = urlAPI.endPoint.url
+        val pdfUrl = "$url/api/trips/$tripId/generate_pdf/"
+
+        val fileName = "trip_$tripId.pdf"
+        val file = File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), fileName)
+
+        AndroidNetworking.download(pdfUrl, file.parent, file.name)
+            .addHeaders("Authorization", userId)
+            .build()
+            .startDownload(object : DownloadListener {
+                override fun onDownloadComplete() {
+                    Toast.makeText(this@DetailTransaksi, "PDF downloaded successfully", Toast.LENGTH_SHORT).show()
+                    openPDF(file)
+                }
+
+                override fun onError(anError: ANError) {
+                    Log.e("DetailTransaksi", "Error downloading PDF: ${anError.errorDetail}")
+                    Toast.makeText(this@DetailTransaksi, "Failed to download PDF: ${anError.message}", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
+    private fun openPDF(file: File) {
+        val uri = FileProvider.getUriForFile(this, "$packageName.fileprovider", file)
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(uri, "application/pdf")
+            flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_ACTIVITY_NO_HISTORY
+        }
+        val chooser = Intent.createChooser(intent, "Open with")
+        startActivity(chooser)
     }
 }
