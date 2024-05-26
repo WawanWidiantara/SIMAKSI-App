@@ -32,7 +32,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".DetailPembayaran"
+            android:name=".history.DetailPembayaran"
             android:exported="false" />
         <activity
             android:name=".register.PersonalData"
@@ -44,7 +44,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".DetailTransaksi"
+            android:name=".history.DetailTransaksi"
             android:exported="false" />
         <activity
             android:name=".DetailRute"

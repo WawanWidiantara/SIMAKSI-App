@@ -44,173 +44,67 @@ class BottomSheetFilter(private var listener : BottomSheetListenerFilter) : Bott
         btnDibatalkan = view.findViewById<Button>(R.id.btnDibatalkan)
 
         btnTerbaru.setOnClickListener {
-            btnTerbaru.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary))
-            btnTerbaru.setBackgroundResource(R.drawable.bg_filter_active)
-            btnTerbaru.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_bold)
-
-            btnTerlama.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnTerlama.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnTerlama.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
+            updateButtonStyle(btnTerbaru, listOf(btnTerlama))
             waktu = "terbaru"
-//            if (status.isNotEmpty() && waktu.isNotEmpty()){
-//                sendDataToActivity(waktu, status)
-//            }
+            sendFilterData()
         }
         btnTerlama.setOnClickListener {
-            btnTerlama.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary))
-            btnTerlama.setBackgroundResource(R.drawable.bg_filter_active)
-            btnTerlama.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_bold)
-
-            btnTerbaru.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnTerbaru.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnTerbaru.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
+            updateButtonStyle(btnTerlama, listOf(btnTerbaru))
             waktu = "terlama"
-//            if (status.isNotEmpty() && waktu.isNotEmpty()){
-//                sendDataToActivity(waktu, status)
-//            }
+            sendFilterData()
         }
 
         btnMenunggu.setOnClickListener {
-            btnMenunggu.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary))
-            btnMenunggu.setBackgroundResource(R.drawable.bg_filter_active)
-            btnMenunggu.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_bold)
-
-            btnLunas.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnLunas.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnLunas.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnAktif.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnAktif.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnAktif.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnSelesai.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnSelesai.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnSelesai.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnDibatalkan.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnDibatalkan.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnDibatalkan.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
+            updateButtonStyle(btnMenunggu, listOf(btnLunas, btnAktif, btnSelesai, btnDibatalkan))
             status = "menunggu"
-//            if (status.isNotEmpty() && waktu.isNotEmpty()){
-//                sendDataToActivity(waktu, status)
-//            }
+            sendFilterData()
         }
 
         btnLunas.setOnClickListener {
-            btnLunas.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary))
-            btnLunas.setBackgroundResource(R.drawable.bg_filter_active)
-            btnLunas.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_bold)
-
-            btnMenunggu.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnMenunggu.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnMenunggu.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnAktif.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnAktif.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnAktif.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnSelesai.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnSelesai.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnSelesai.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnDibatalkan.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnDibatalkan.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnDibatalkan.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
+            updateButtonStyle(btnLunas, listOf(btnMenunggu, btnAktif, btnSelesai, btnDibatalkan))
             status = "lunas"
-//            if (status.isNotEmpty() && waktu.isNotEmpty()){
-//                sendDataToActivity(waktu, status)
-//            }
+            sendFilterData()
         }
 
         btnAktif.setOnClickListener {
-            btnAktif.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary))
-            btnAktif.setBackgroundResource(R.drawable.bg_filter_active)
-            btnAktif.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_bold)
-
-            btnMenunggu.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnMenunggu.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnMenunggu.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnLunas.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnLunas.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnLunas.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnSelesai.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnSelesai.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnSelesai.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnDibatalkan.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnDibatalkan.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnDibatalkan.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
+            updateButtonStyle(btnAktif, listOf(btnMenunggu, btnLunas, btnSelesai, btnDibatalkan))
             status = "aktif"
-//            if (status.isNotEmpty() && waktu.isNotEmpty()){
-//                sendDataToActivity(waktu, status)
-//            }
+            sendFilterData()
         }
 
         btnSelesai.setOnClickListener {
-            btnSelesai.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary))
-            btnSelesai.setBackgroundResource(R.drawable.bg_filter_active)
-            btnSelesai.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_bold)
-
-            btnMenunggu.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnMenunggu.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnMenunggu.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnLunas.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnLunas.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnLunas.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnAktif.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnAktif.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnAktif.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnDibatalkan.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnDibatalkan.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnDibatalkan.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
+            updateButtonStyle(btnSelesai, listOf(btnMenunggu, btnLunas, btnAktif, btnDibatalkan))
             status = "selesai"
-//            if (status.isNotEmpty() && waktu.isNotEmpty()){
-//                sendDataToActivity(waktu, status)
-//            }
+            sendFilterData()
         }
 
         btnDibatalkan.setOnClickListener {
-            btnDibatalkan.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary))
-            btnDibatalkan.setBackgroundResource(R.drawable.bg_filter_active)
-            btnDibatalkan.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_bold)
-
-            btnAktif.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnAktif.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnAktif.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnMenunggu.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnMenunggu.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnMenunggu.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnLunas.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnLunas.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnLunas.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
-            btnSelesai.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
-            btnSelesai.setBackgroundResource(R.drawable.bg_filter_unactive)
-            btnSelesai.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
-
+            updateButtonStyle(btnDibatalkan, listOf(btnMenunggu, btnLunas, btnAktif, btnSelesai))
             status = "dibatalkan"
-//            if (status.isNotEmpty() && waktu.isNotEmpty()){
-//                sendDataToActivity(waktu, status)
-//            }
+            sendFilterData()
         }
-
 
         return view
     }
 
+    private fun updateButtonStyle(activeButton: Button, inactiveButtons: List<Button>) {
+        activeButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary))
+        activeButton.setBackgroundResource(R.drawable.bg_filter_active)
+        activeButton.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_bold)
+
+        inactiveButtons.forEach { button ->
+            button.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_selesai))
+            button.setBackgroundResource(R.drawable.bg_filter_unactive)
+            button.typeface = ResourcesCompat.getFont(requireContext(), R.font.lato_medium)
+        }
+    }
+
+    private fun sendFilterData() {
+        if (status.isNotEmpty() && waktu.isNotEmpty()) {
+            listener.onFilterApplied(status, waktu)
+            dismiss()
+        }
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
@@ -223,10 +117,12 @@ class BottomSheetFilter(private var listener : BottomSheetListenerFilter) : Bott
         dialog?.window?.setWindowAnimations(R.style.BottomSheetAnimationEnter)
         dialog?.window?.setDimAmount(0.5f) // Set transparansi latar belakang
     }
+
     override fun onStop() {
         super.onStop()
         dismiss() // Pastikan dismiss dipanggil untuk menutup BottomSheetDialogFragment
     }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
@@ -235,8 +131,4 @@ class BottomSheetFilter(private var listener : BottomSheetListenerFilter) : Bott
 
         }
     }
-//    private fun sendDataToActivity(waktu : String, status : String) {
-//        listener?.onDataReceived(waktu, status)
-//    }
-
 }

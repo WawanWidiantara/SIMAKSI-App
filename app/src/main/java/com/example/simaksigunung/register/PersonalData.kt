@@ -8,6 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.androidnetworking.AndroidNetworking
@@ -25,6 +26,7 @@ import java.util.Locale
 class PersonalData : AppCompatActivity() {
     private lateinit var binding: ActivityPersonalDataBinding
     var getTanggalLahir = ""
+    private var selectedGender = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +53,18 @@ class PersonalData : AppCompatActivity() {
                     }.time
                 )
                 getTanggalLahir = formattedDate
+            }
+        }
+
+        binding.spinnerJenisKelamin.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+                selectedGender = parent.getItemAtPosition(position).toString()
+                validateForm()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                selectedGender = ""
+                validateForm()
             }
         }
 
@@ -91,18 +105,7 @@ class PersonalData : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                val nik = binding.edNik.text.toString().trim()
-                val nama = binding.edNama.text.toString().trim()
-                val tanggalLahir = binding.edTanggalLahir.text.toString().trim()
-                val tinggiBadan = binding.edTinggiBadan.text.toString().trim()
-                val beratBadan = binding.edBeratBadan.text.toString().trim()
-                val nomorTelepon = binding.edNomor.text.toString().trim()
-                val nomorDarurat = binding.edNomorDarurat.text.toString().trim()
-
-                val isFormValid = nik.isNotEmpty() && nama.isNotEmpty() && tanggalLahir.isNotEmpty() &&
-                        tinggiBadan.isNotEmpty() && beratBadan.isNotEmpty() &&
-                        nomorTelepon.isNotEmpty() && nomorDarurat.isNotEmpty()
-                updateButtonState(isFormValid)
+                validateForm()
             }
         }
 
@@ -113,6 +116,22 @@ class PersonalData : AppCompatActivity() {
         binding.edBeratBadan.addTextChangedListener(textWatcher)
         binding.edNomor.addTextChangedListener(textWatcher)
         binding.edNomorDarurat.addTextChangedListener(textWatcher)
+    }
+
+    private fun validateForm() {
+        val nik = binding.edNik.text.toString().trim()
+        val nama = binding.edNama.text.toString().trim()
+        val tanggalLahir = binding.edTanggalLahir.text.toString().trim()
+        val tinggiBadan = binding.edTinggiBadan.text.toString().trim()
+        val beratBadan = binding.edBeratBadan.text.toString().trim()
+        val nomorTelepon = binding.edNomor.text.toString().trim()
+        val nomorDarurat = binding.edNomorDarurat.text.toString().trim()
+        val isFormValid = nik.isNotEmpty() && nama.isNotEmpty() && tanggalLahir.isNotEmpty() &&
+                tinggiBadan.isNotEmpty() && beratBadan.isNotEmpty() &&
+                nomorTelepon.isNotEmpty() && nomorDarurat.isNotEmpty() &&
+                selectedGender.isNotEmpty() && selectedGender != "Pilih jenis kelamin"
+
+        updateButtonState(isFormValid)
     }
 
     private fun updateButtonState(isFormValid: Boolean) {
@@ -135,6 +154,7 @@ class PersonalData : AppCompatActivity() {
             put("weight", binding.edBeratBadan.text.toString().trim())
             put("height", binding.edTinggiBadan.text.toString().trim())
             put("address", "random street")
+            put("gender", selectedGender)
         }
 
         AndroidNetworking.post("$url/api/users/register")

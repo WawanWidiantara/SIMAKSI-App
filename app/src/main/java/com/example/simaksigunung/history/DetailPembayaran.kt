@@ -1,4 +1,4 @@
-package com.example.simaksigunung
+package com.example.simaksigunung.history
 
 import android.content.ClipData
 import android.content.ClipboardManager

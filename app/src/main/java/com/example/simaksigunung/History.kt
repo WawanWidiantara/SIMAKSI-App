@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.JSONObjectRequestListener
@@ -17,16 +16,19 @@ import com.example.simaksigunung.BottomSheet.BottomSheetFilter
 import com.example.simaksigunung.BottomSheet.BottomSheetListener.BottomSheetListenerFilter
 import com.example.simaksigunung.api.urlAPI
 import com.example.simaksigunung.databinding.FragmentHistoryBinding
+import com.example.simaksigunung.history.AdapterHistory
+import com.example.simaksigunung.history.DataHistory
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import org.json.JSONObject
-import java.text.SimpleDateFormat
-import java.util.Locale
 
 class History : Fragment(), BottomSheetListenerFilter {
     private lateinit var binding: FragmentHistoryBinding
     private lateinit var adapter: AdapterHistory
     private var dataList: MutableList<DataHistory> = mutableListOf()
     private var bottomSheetDialog: BottomSheetFilter? = null
+
+    private var statusFilter: String = ""
+    private var orderFilter: String = "terlama"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +47,6 @@ class History : Fragment(), BottomSheetListenerFilter {
             dialogBottomSheet()
         }
     }
-
 
     private fun initializeRecyclerView() {
         binding.recyclerView.setHasFixedSize(true)
@@ -96,7 +97,7 @@ class History : Fragment(), BottomSheetListenerFilter {
 
         val url = urlAPI.endPoint.url
 
-        AndroidNetworking.get("$url/api/trips?status=&order=terlama")
+        AndroidNetworking.get("$url/api/trips?status=$statusFilter&order=$orderFilter")
             .addHeaders("Authorization", userId)
             .build()
             .getAsJSONObject(object : JSONObjectRequestListener {
@@ -127,5 +128,11 @@ class History : Fragment(), BottomSheetListenerFilter {
                     binding.swipeRefreshLayout.isRefreshing = false
                 }
             })
+    }
+
+    override fun onFilterApplied(status: String, order: String) {
+        statusFilter = status
+        orderFilter = order
+        fetchHistoryData()
     }
 }

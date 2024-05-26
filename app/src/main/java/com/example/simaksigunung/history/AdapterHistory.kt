@@ -1,4 +1,4 @@
-package com.example.simaksigunung
+package com.example.simaksigunung.history
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.simaksigunung.R
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.TimeZone

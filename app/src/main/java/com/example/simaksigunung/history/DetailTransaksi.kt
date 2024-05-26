@@ -1,10 +1,9 @@
-package com.example.simaksigunung
+package com.example.simaksigunung.history
 
 import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -20,6 +19,8 @@ import com.androidnetworking.AndroidNetworking
 import com.androidnetworking.error.ANError
 import com.androidnetworking.interfaces.DownloadListener
 import com.androidnetworking.interfaces.JSONObjectRequestListener
+import com.example.simaksigunung.MainActivity
+import com.example.simaksigunung.R
 import com.example.simaksigunung.api.urlAPI
 import com.example.simaksigunung.databinding.ActivityDetailTransaksiBinding
 import com.example.simaksigunung.databinding.DialogDibatalkanBinding
