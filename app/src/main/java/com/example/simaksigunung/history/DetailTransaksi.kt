@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -34,8 +35,13 @@ class DetailTransaksi : AppCompatActivity() {
     private val dateFormatDisplay = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     private val dateFormatServer = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
 
-    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-        if (isGranted) {
+    private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+        val writeGranted = permissions[Manifest.permission.WRITE_EXTERNAL_STORAGE] ?: false
+        val readImagesGranted = permissions[Manifest.permission.READ_MEDIA_IMAGES] ?: false
+        val readVideoGranted = permissions[Manifest.permission.READ_MEDIA_VIDEO] ?: false
+        val readAudioGranted = permissions[Manifest.permission.READ_MEDIA_AUDIO] ?: false
+
+        if (writeGranted || readImagesGranted || readVideoGranted || readAudioGranted) {
             generatePDF()
         } else {
             Toast.makeText(this, "Permission denied. Cannot download PDF.", Toast.LENGTH_SHORT).show()
@@ -247,17 +253,24 @@ class DetailTransaksi : AppCompatActivity() {
     }
 
     private fun checkPermissionsAndDownloadPDF() {
-        when {
-            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED -> {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_VIDEO) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_AUDIO) != PackageManager.PERMISSION_GRANTED) {
+
+                requestPermissionLauncher.launch(arrayOf(
+                    Manifest.permission.READ_MEDIA_IMAGES,
+                    Manifest.permission.READ_MEDIA_VIDEO,
+                    Manifest.permission.READ_MEDIA_AUDIO
+                ))
+            } else {
                 generatePDF()
             }
-            shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE) -> {
-                // Show an explanation to the user
-                Toast.makeText(this, "Storage permission is required to download PDF", Toast.LENGTH_SHORT).show()
-            }
-            else -> {
-                // Request permission
-                requestPermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        } else {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissionLauncher.launch(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE))
+            } else {
+                generatePDF()
             }
         }
     }

@@ -65,6 +65,7 @@ class Profile : Fragment() {
             binding.nama.visibility = View.VISIBLE
             binding.personalDataBody.visibility = View.VISIBLE
             binding.btnKeluar.visibility = View.VISIBLE
+            binding.idUser.visibility = View.VISIBLE
 
             val email = sharedPreferences.getString("email", "")
             val name = sharedPreferences.getString("name", "")
@@ -73,6 +74,7 @@ class Profile : Fragment() {
             val phone = sharedPreferences.getString("phone", "")
 
             binding.nama.text = name
+            binding.idUser.text = "ID: ${userId.toString()}"
             binding.email.text = email
             binding.tanggalLahir.text = dateOfBirth
             binding.jenisKelmain.text = gender
@@ -81,6 +83,7 @@ class Profile : Fragment() {
         } else {
             binding.btnLogin.visibility = View.VISIBLE
             binding.btnRegister.visibility = View.VISIBLE
+            binding.idUser.visibility = View.GONE
             binding.photo.visibility = View.GONE
             binding.nama.visibility = View.GONE
             binding.personalDataBody.visibility = View.GONE

@@ -226,7 +226,7 @@
                         android:layout_marginRight="16dp"
                         android:layout_width="45dp"
                         android:layout_height="match_parent"
-                        android:src="@drawable/pos_4"
+                        android:src="@drawable/pos_3"
                         android:scaleType="centerCrop"
                         android:adjustViewBounds="true"
                         android:layout_alignParentStart="true"
