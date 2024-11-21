@@ -16,7 +16,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/bottomNavigationView">
-
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
