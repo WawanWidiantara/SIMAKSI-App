@@ -52,5 +52,7 @@ dependencies {
     implementation("com.airbnb.android:lottie:6.1.0")
     implementation("androidx.core:core-splashscreen:1.0.0")
     implementation("com.github.amitshekhariitbhu.Fast-Android-Networking:android-networking:1.0.4")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("com.google.android.material:material:1.9.0")
 
 }
