@@ -70,7 +70,7 @@ class PesanJalur : AppCompatActivity(), BottomSheetListener {
                 time = dateFormatServer.parse(getTanggalNaik)!!
             }
 
-            showDatePicker(this, calendarNaik) { _, year, month, dayOfMonth ->
+            showDatePicker(this) { _, year, month, dayOfMonth ->
                 val selectedDate = Calendar.getInstance().apply {
                     set(year, month, dayOfMonth)
                 }.time
@@ -125,20 +125,29 @@ class PesanJalur : AppCompatActivity(), BottomSheetListener {
         fetchMembers(tripId)
     }
 
-    private fun showDatePicker(context: Context, minDate: Calendar? = null, listener: DatePickerDialog.OnDateSetListener) {
+    private fun showDatePicker(context: Context, listener: DatePickerDialog.OnDateSetListener) {
         val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
+        val today = Calendar.getInstance()
 
-        val datePickerDialog = DatePickerDialog(context, listener, year, month, dayOfMonth)
-        if (minDate != null) {
-            datePickerDialog.datePicker.minDate = minDate.timeInMillis
-        } else {
-            datePickerDialog.datePicker.minDate = calendar.timeInMillis // Restrict to today and future dates
+        // Calculate the date one month from today
+        val oneMonthFromToday = Calendar.getInstance().apply {
+            add(Calendar.MONTH, 1)
         }
+
+        // Initialize DatePickerDialog with today's date
+        val datePickerDialog = DatePickerDialog(
+            context, listener,
+            today.get(Calendar.YEAR),
+            today.get(Calendar.MONTH),
+            today.get(Calendar.DAY_OF_MONTH)
+        )
+
+        // Restrict selectable dates to one month from today
+        datePickerDialog.datePicker.minDate = today.timeInMillis
+        datePickerDialog.datePicker.maxDate = oneMonthFromToday.timeInMillis
         datePickerDialog.show()
     }
+
 
     private fun dialogBottomSheet() {
         bottomSheetDialog = BottomSheetAddMember()
