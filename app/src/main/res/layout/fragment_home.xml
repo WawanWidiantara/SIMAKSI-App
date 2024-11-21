@@ -54,22 +54,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:layout_below="@id/parentTop"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="54dp"
-            android:padding="15dp"
-            android:orientation="vertical">
-            <ImageView
-                android:scaleType="centerCrop"
-                android:adjustViewBounds="true"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="15dp">
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/imageCarousel"
                 android:layout_width="match_parent"
-                android:src="@drawable/main_gunung"
                 android:layout_height="125dp"
-                android:background="@color/stroke"
-                />
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:overScrollMode="never" />
+            <LinearLayout
+                android:id="@+id/dotIndicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal" />
             <TextView
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="2dp"
                 android:justificationMode="inter_word"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
