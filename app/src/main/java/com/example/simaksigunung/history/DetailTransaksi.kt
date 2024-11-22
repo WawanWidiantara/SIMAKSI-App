@@ -87,6 +87,21 @@ class DetailTransaksi : AppCompatActivity() {
         binding.backActivity.setOnClickListener {
             onBackPressed()
         }
+
+        binding.btnGenerateQR.setOnClickListener {
+            val sharedPreferences = getSharedPreferences("user", Context.MODE_PRIVATE)
+            val userId = sharedPreferences?.getInt("user_id", -1) ?: -1
+
+            if (userId == -1) {
+                Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val intent = Intent(this, QR::class.java)
+            intent.putExtra("user_id", userId.toString())
+            startActivity(intent)
+        }
+
     }
 
     private fun fetchTripDetails(tripId: Int, statusOrder: String? = null) {
@@ -152,16 +167,19 @@ class DetailTransaksi : AppCompatActivity() {
                     binding.btnPembayaran.visibility = View.VISIBLE
                     binding.btnBatalkan.visibility = View.VISIBLE
                     binding.btnCetak.visibility = View.GONE
+                    binding.btnGenerateQR.visibility = View.GONE
                 }
                 "lunas" -> {
                     binding.btnPembayaran.visibility = View.GONE
                     binding.btnBatalkan.visibility = View.GONE
                     binding.btnCetak.visibility = View.VISIBLE
+                    binding.btnGenerateQR.visibility = View.VISIBLE
                 }
                 else -> {
                     binding.btnPembayaran.visibility = View.GONE
                     binding.btnBatalkan.visibility = View.GONE
                     binding.btnCetak.visibility = View.GONE
+                    binding.btnGenerateQR.visibility = View.GONE
                 }
             }
 

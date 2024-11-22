@@ -54,5 +54,6 @@ dependencies {
     implementation("com.github.amitshekhariitbhu.Fast-Android-Networking:android-networking:1.0.4")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("com.google.android.material:material:1.9.0")
+    implementation("com.github.androidmads:QRGenerator:1.0.5")
 
 }

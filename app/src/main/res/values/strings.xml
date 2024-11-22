@@ -20,6 +20,9 @@
     <string name="sukses_pesan">
         "Terima kasih atas pemesanan Anda.\nCek riwayat transaksi untuk melihat status pesanan dan detail pembayaran anda lebih lanjut.
     </string>
+    <string name="qr_pesan">
+        "Scan kode QR ini di lokasi.\nScan dilakukan sebanyak 2 kali, sebelum naik dan saat turun.
+    </string>
     <string-array name="jenis_kelamin">
         <item>Pilih jenis kelamin</item>
         <item>Laki-Laki</item>

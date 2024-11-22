@@ -44,6 +44,9 @@
             android:name=".history.DetailTransaksi"
             android:exported="false" />
         <activity
+            android:name=".history.QR"
+            android:exported="false" />
+        <activity
             android:name=".DetailRute"
             android:exported="false" />
         <activity
