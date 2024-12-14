@@ -1,6 +1,7 @@
 package com.example.simaksigunung.history
 
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,11 @@ class QR : AppCompatActivity() {
 
     private fun generateQRCode(data: String) {
         val qrgEncoder = QRGEncoder(data, null, QRGContents.Type.TEXT, 500)
+
+        // Set colors for the QR code
+        qrgEncoder.setColorBlack(Color.WHITE);
+        qrgEncoder.setColorWhite(Color.BLACK);
+
         try {
             val bitmap: Bitmap = qrgEncoder.bitmap
             binding.qrImage.setImageBitmap(bitmap)
