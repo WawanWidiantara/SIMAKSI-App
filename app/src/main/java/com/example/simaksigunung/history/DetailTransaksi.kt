@@ -174,6 +174,11 @@ class DetailTransaksi : AppCompatActivity() {
                     binding.btnBatalkan.visibility = View.GONE
                     binding.btnCetak.visibility = View.VISIBLE
                     binding.btnGenerateQR.visibility = View.VISIBLE
+                }"aktif" -> {
+                    binding.btnPembayaran.visibility = View.GONE
+                    binding.btnBatalkan.visibility = View.GONE
+                    binding.btnCetak.visibility = View.VISIBLE
+                    binding.btnGenerateQR.visibility = View.VISIBLE
                 }
                 else -> {
                     binding.btnPembayaran.visibility = View.GONE

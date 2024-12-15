@@ -104,7 +104,7 @@ class History : Fragment(), BottomSheetListenerFilter {
                 override fun onResponse(response: JSONObject?) {
                     response?.let {
                         val dataArray = it.getJSONArray("data")
-                        dataList.clear()  // Clear the existing list
+                        dataList.clear()
                         for (i in 0 until dataArray.length()) {
                             val tripObject = dataArray.getJSONObject(i)
                             val dataHistory = DataHistory(

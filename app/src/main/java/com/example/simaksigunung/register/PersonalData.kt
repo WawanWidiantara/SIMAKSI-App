@@ -116,6 +116,8 @@ class PersonalData : AppCompatActivity() {
         binding.edBeratBadan.addTextChangedListener(textWatcher)
         binding.edNomor.addTextChangedListener(textWatcher)
         binding.edNomorDarurat.addTextChangedListener(textWatcher)
+        binding.edAlamat.addTextChangedListener(textWatcher)
+
     }
 
     private fun validateForm() {
@@ -126,13 +128,17 @@ class PersonalData : AppCompatActivity() {
         val beratBadan = binding.edBeratBadan.text.toString().trim()
         val nomorTelepon = binding.edNomor.text.toString().trim()
         val nomorDarurat = binding.edNomorDarurat.text.toString().trim()
+        val alamat = binding.edAlamat.text.toString().trim()
+
         val isFormValid = nik.isNotEmpty() && nama.isNotEmpty() && tanggalLahir.isNotEmpty() &&
                 tinggiBadan.isNotEmpty() && beratBadan.isNotEmpty() &&
                 nomorTelepon.isNotEmpty() && nomorDarurat.isNotEmpty() &&
+                alamat.isNotEmpty() &&
                 selectedGender.isNotEmpty() && selectedGender != "Pilih jenis kelamin"
 
         updateButtonState(isFormValid)
     }
+
 
     private fun updateButtonState(isFormValid: Boolean) {
         binding.btnDaftar.isEnabled = isFormValid
@@ -155,6 +161,7 @@ class PersonalData : AppCompatActivity() {
             put("height", binding.edTinggiBadan.text.toString().trim())
             put("address", "random street")
             put("gender", selectedGender)
+            put("address", binding.edAlamat.text.toString().trim())
         }
 
         AndroidNetworking.post("$url/api/users/register")
