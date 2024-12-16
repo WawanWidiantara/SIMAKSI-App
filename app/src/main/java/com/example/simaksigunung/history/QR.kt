@@ -17,14 +17,14 @@ class QR : AppCompatActivity() {
         binding = ActivityQrBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val userId = intent.getStringExtra("user_id")
-        if (userId.isNullOrEmpty()) {
-            Toast.makeText(this, "Failed to get user ID", Toast.LENGTH_SHORT).show()
+        val tripId = intent.getStringExtra("trip_id")
+        if (tripId.isNullOrEmpty()) {
+            Toast.makeText(this, "Failed to get trip ID", Toast.LENGTH_SHORT).show()
             finish()
             return
         }
 
-        generateQRCode(userId)
+        generateQRCode(tripId)
 
         binding.btnKembali.setOnClickListener {
             finish()

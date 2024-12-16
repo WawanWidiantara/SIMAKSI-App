@@ -98,7 +98,7 @@ class DetailTransaksi : AppCompatActivity() {
             }
 
             val intent = Intent(this, QR::class.java)
-            intent.putExtra("user_id", userId.toString())
+            intent.putExtra("trip_id", tripId.toString())
             startActivity(intent)
         }
 
