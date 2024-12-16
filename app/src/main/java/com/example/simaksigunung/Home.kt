@@ -27,9 +27,9 @@ class Home : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val carouselImages = listOf(
-        R.drawable.main_gunung, // Replace with your actual drawable resources
-        R.drawable.main_gunung, // Replace with your actual drawable resources
-        R.drawable.main_gunung  // Replace with your actual drawable resources
+        R.drawable.main_gunung,
+        R.drawable.main_gunung_1,
+        R.drawable.main_gunung_2
     )
 
     private var currentPage = 0
